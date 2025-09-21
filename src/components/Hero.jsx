@@ -13,7 +13,7 @@ function Hero() {
         {/* Left Side (Text) */}
         <div className="text-left">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4 animate-fade-in">
-            Hi, I’m <span className="text-gray-400">William</span>
+            Hi, I’m <span className="text-gray-400">William Duncan Gonzales</span>
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-6 animate-slide-up">
             Web Developer & Designer
