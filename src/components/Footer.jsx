@@ -2,32 +2,33 @@ import { useState } from "react";
 
 function Footer() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [loading, setLoading] = useState(false);
-  const [popup, setPopup] = useState(null); // { type: "success" | "error", message: string }
+  const [status, setStatus] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setStatus("loading");
+    setShowPopup(true);
 
     try {
       const res = await fetch("/.netlify/functions/sendMessage", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const data = await res.json();
 
+      const data = await res.json();
       if (data.success) {
-        setPopup({ type: "success", message: "Your message has been sent 🎉" });
+        setStatus("success");
         setForm({ name: "", email: "", message: "" });
       } else {
-        setPopup({ type: "error", message: "Oops! Something went wrong ❌" });
+        setStatus("error");
       }
-    } catch (error) {
-      setPopup({ type: "error", message: "Server error. Try again later." });
-    } finally {
-      setLoading(false);
+    } catch {
+      setStatus("error");
     }
+
+    // Auto hide popup after 3s
+    setTimeout(() => setShowPopup(false), 3000);
   };
 
   return (
@@ -39,11 +40,14 @@ function Footer() {
         </p>
 
         {/* Contact Form */}
-        <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4 max-w-md mx-auto">
+        <form
+          onSubmit={handleSubmit}
+          className="mt-6 flex flex-col gap-4 max-w-md mx-auto"
+        >
           <input
             type="text"
             placeholder="Your Name"
-            className="p-3 rounded bg-gray-800 border border-gray-700 text-white"
+            className="p-3 rounded bg-gray-900 border border-gray-700 text-white"
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             required
@@ -51,51 +55,42 @@ function Footer() {
           <input
             type="email"
             placeholder="Your Email"
-            className="p-3 rounded bg-gray-800 border border-gray-700 text-white"
+            className="p-3 rounded bg-gray-900 border border-gray-700 text-white"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             required
           />
           <textarea
             placeholder="Your Message"
-            className="p-3 rounded bg-gray-800 border border-gray-700 text-white"
+            className="p-3 rounded bg-gray-900 border border-gray-700 text-white"
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
             required
           />
           <button
             type="submit"
-            disabled={loading}
-            className="px-6 py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition disabled:opacity-50"
+            className="px-6 py-3 bg-white text-black font-semibold rounded shadow hover:bg-gray-200 transition"
           >
-            {loading ? "Sending..." : "Send"}
+            Send
           </button>
         </form>
-
-        {/* Popup Confirmation */}
-        {popup && (
-          <div
-            className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50`}
-            onClick={() => setPopup(null)}
-          >
-            <div
-              className={`p-6 rounded-2xl shadow-lg text-lg font-medium ${
-                popup.type === "success"
-                  ? "bg-green-500 text-white"
-                  : "bg-red-500 text-white"
-              }`}
-            >
-              {popup.message}
-              <button
-                onClick={() => setPopup(null)}
-                className="ml-4 px-3 py-1 bg-white text-black rounded-lg"
-              >
-                OK
-              </button>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Popup Notification */}
+      {showPopup && (
+        <div
+          className={`fixed bottom-6 right-6 px-6 py-4 rounded-xl shadow-lg text-white transform transition-all duration-500 
+          ${status === "loading" ? "bg-gray-700 animate-pulse" : ""}
+          ${status === "success" ? "bg-green-600" : ""}
+          ${status === "error" ? "bg-red-600" : ""}
+          ${showPopup ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+        `}
+        >
+          {status === "loading" && "⏳ Sending..."}
+          {status === "success" && "✅ Message Sent!"}
+          {status === "error" && "❌ Failed to Send"}
+        </div>
+      )}
     </footer>
   );
 }
