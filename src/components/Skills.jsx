@@ -1,26 +1,64 @@
 import useInView from "./hooks/useInView";
+import { FaReact, FaNodeJs, FaGitAlt, FaPhp } from "react-icons/fa";
+import { SiJavascript, SiTailwindcss, SiMysql } from "react-icons/si";
 
 function Skills() {
   const [ref, isVisible] = useInView();
-  const skills = ["React", "JavaScript", "Tailwind CSS", "Node.js", "Git", "PHP", "SQL"];
+
+  const skills = [
+    { name: "React", icon: <FaReact size={30} className="text-cyan-400" />, level: 85 },
+    { name: "JavaScript", icon: <SiJavascript size={30} className="text-yellow-400" />, level: 90 },
+    { name: "Tailwind CSS", icon: <SiTailwindcss size={30} className="text-sky-400" />, level: 80 },
+    { name: "Node.js", icon: <FaNodeJs size={30} className="text-green-500" />, level: 75 },
+    { name: "Git", icon: <FaGitAlt size={30} className="text-orange-500" />, level: 85 },
+    { name: "PHP", icon: <FaPhp size={30} className="text-indigo-400" />, level: 70 },
+    { name: "SQL", icon: <SiMysql size={30} className="text-blue-500" />, level: 65 },
+  ];
 
   return (
     <section
       id="skills"
       ref={ref}
-      className={`min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-20 px-6 transition-all duration-1000 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
+      className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-20 px-6"
     >
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-10">Skills</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <h2 className="text-4xl font-bold mb-10 border-b-4 border-gray-700 inline-block">
+          Skills
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left">
           {skills.map((skill, idx) => (
             <div
               key={idx}
-              className="p-6 bg-gray-800 rounded-xl shadow-lg hover:bg-gray-700 transition transform hover:scale-105"
+              className={`
+                p-6 bg-gray-800 rounded-xl shadow-lg 
+                hover:bg-gray-700 transition transform hover:scale-105
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+              `}
+              style={{
+                transition: "all 0.8s ease-out",
+                transitionDelay: `${idx * 0.15}s`,
+              }}
             >
-              {skill}
+              {/* Icon and Name */}
+              <div className="flex items-center gap-3 mb-4">
+                {skill.icon}
+                <h3 className="text-xl font-semibold">{skill.name}</h3>
+              </div>
+
+              {/* Progress Bar */}
+              <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+                <div
+                  className="h-3 rounded-full bg-gradient-to-r from-gray-300 to-white"
+                  style={{
+                    width: isVisible ? `${skill.level}%` : "0%",
+                    transition: "width 1.2s ease-in-out",
+                  }}
+                ></div>
+              </div>
+
+              {/* Percentage */}
+              <p className="mt-2 text-sm text-gray-400">{skill.level}%</p>
             </div>
           ))}
         </div>
