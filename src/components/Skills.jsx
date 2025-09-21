@@ -19,20 +19,20 @@ function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white py-20 px-6"
+      className="min-h-screen bg-gray-950 text-white py-20 px-6"
     >
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-10 border-b-4 border-gray-700 inline-block">
           Skills
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {skills.map((skill, idx) => (
             <div
               key={idx}
               className={`
-                p-6 bg-gray-800 rounded-xl shadow-lg 
-                hover:bg-gray-700 transition transform hover:scale-105
+                p-6 rounded-2xl backdrop-blur-md bg-gray-900/70 shadow-2xl border border-gray-800
+                hover:shadow-cyan-500/30 hover:-translate-y-2 transition-all
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
               `}
               style={{
@@ -47,9 +47,9 @@ function Skills() {
               </div>
 
               {/* Progress Bar */}
-              <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+              <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
                 <div
-                  className="h-3 rounded-full bg-gradient-to-r from-gray-300 to-white"
+                  className="h-3 rounded-full bg-gradient-to-r from-gray-400 to-white"
                   style={{
                     width: isVisible ? `${skill.level}%` : "0%",
                     transition: "width 1.2s ease-in-out",

@@ -8,17 +8,21 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-20 px-6"
+      className="min-h-screen bg-gray-950 text-white py-20 px-6"
     >
-      <div className="max-w-6xl mx-auto text-center animate-slide-up">
-        <h2 className="text-4xl font-bold mb-10">Projects</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-12 border-b-4 border-gray-700 inline-block">
+          Projects
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-10 mt-10">
           {projects.map((p, idx) => (
             <div
               key={idx}
-              className="p-6 bg-gray-800 rounded-xl shadow-lg hover:bg-gray-700 transition transform hover:scale-105 animate-zoom-in"
+              className="p-8 rounded-2xl backdrop-blur-md bg-gray-900/70 shadow-2xl border border-gray-800 
+              hover:-translate-y-2 hover:shadow-cyan-500/30 transition-all duration-500"
             >
-              <h3 className="text-xl font-semibold mb-2">{p.title}</h3>
+              <h3 className="text-2xl font-semibold mb-3">{p.title}</h3>
               <p className="text-gray-400">{p.desc}</p>
             </div>
           ))}
