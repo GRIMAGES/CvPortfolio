@@ -2,95 +2,86 @@ import { useState } from "react";
 
 function Footer() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
+  const [popup, setPopup] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("loading");
-    setShowPopup(true);
-
-    try {
-      const res = await fetch("/.netlify/functions/sendMessage", {
-        method: "POST",
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        setStatus("success");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-
-    // Auto hide popup after 3s
-    setTimeout(() => setShowPopup(false), 3000);
+    setPopup("loading");
+    const res = await fetch("/.netlify/functions/sendMessage", {
+      method: "POST",
+      body: JSON.stringify(form),
+    });
+    const data = await res.json();
+    setPopup(data.success ? "success" : "error");
+    if (data.success) setForm({ name: "", email: "", message: "" });
+    setTimeout(() => setPopup(""), 3000);
   };
 
   return (
-    <footer className="w-full bg-gray-950 text-gray-400 py-10 text-center border-t border-gray-800 relative">
-      <div className="max-w-6xl mx-auto">
-        <p>
-          © {new Date().getFullYear()}{" "}
-          <span className="text-white font-semibold">William</span> — All Rights Reserved.
-        </p>
+    <footer className="w-full bg-gray-950 text-gray-400 py-14 border-t border-gray-800">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6">
+        
+        {/* Left - Socials */}
+        <div className="text-left">
+          <h3 className="text-lg font-semibold text-white mb-4">Connect with me</h3>
+          <ul className="space-y-3">
+            <li><a href="https://github.com" className="hover:text-white transition">GitHub</a></li>
+            <li><a href="https://linkedin.com" className="hover:text-white transition">LinkedIn</a></li>
+            <li><a href="mailto:youremail@example.com" className="hover:text-white transition">Email</a></li>
+          </ul>
+        </div>
 
-        {/* Contact Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="mt-6 flex flex-col gap-4 max-w-md mx-auto"
-        >
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="p-3 rounded bg-gray-900 border border-gray-700 text-white"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            required
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="p-3 rounded bg-gray-900 border border-gray-700 text-white"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            required
-          />
-          <textarea
-            placeholder="Your Message"
-            className="p-3 rounded bg-gray-900 border border-gray-700 text-white"
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            required
-          />
-          <button
-            type="submit"
-            className="px-6 py-3 bg-white text-black font-semibold rounded shadow hover:bg-gray-200 transition"
-          >
-            Send
-          </button>
-        </form>
+        {/* Right - Contact Form */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4">Contact Me</h3>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="p-3 rounded bg-gray-900 border border-gray-700 focus:border-gray-500 focus:outline-none"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="p-3 rounded bg-gray-900 border border-gray-700 focus:border-gray-500 focus:outline-none"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              required
+            />
+            <textarea
+              placeholder="Your Message"
+              className="p-3 rounded bg-gray-900 border border-gray-700 focus:border-gray-500 focus:outline-none"
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              required
+            />
+            <button type="submit" className="px-6 py-3 bg-white text-black font-semibold rounded hover:bg-gray-300 transition">
+              Send
+            </button>
+          </form>
+        </div>
       </div>
 
       {/* Popup Notification */}
-      {showPopup && (
+      {popup && (
         <div
-          className={`fixed bottom-6 right-6 px-6 py-4 rounded-xl shadow-lg text-white transform transition-all duration-500 
-          ${status === "loading" ? "bg-gray-700 animate-pulse" : ""}
-          ${status === "success" ? "bg-green-600" : ""}
-          ${status === "error" ? "bg-red-600" : ""}
-          ${showPopup ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
-        `}
+          className={`fixed bottom-6 right-6 px-6 py-4 rounded-xl shadow-2xl transition transform duration-300
+            ${popup === "loading" ? "bg-gray-800 text-gray-300 animate-pulse" : ""}
+            ${popup === "success" ? "bg-green-600 text-white scale-105" : ""}
+            ${popup === "error" ? "bg-red-600 text-white scale-105" : ""}`}
         >
-          {status === "loading" && "⏳ Sending..."}
-          {status === "success" && "✅ Message Sent!"}
-          {status === "error" && "❌ Failed to Send"}
+          {popup === "loading" && "⏳ Sending..."}
+          {popup === "success" && "✅ Message Sent Successfully!"}
+          {popup === "error" && "❌ Failed to Send Message"}
         </div>
       )}
+
+      <div className="text-center text-gray-600 mt-10 text-sm">
+        © {new Date().getFullYear()} <span className="text-white font-semibold">William</span> — All Rights Reserved.
+      </div>
     </footer>
   );
 }
