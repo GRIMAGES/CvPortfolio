@@ -37,18 +37,18 @@ function About() {
             <div className="space-y-6">
               <div className="bg-gray-800/80 p-6 rounded-xl shadow-md hover:shadow-lg transition">
                 <h3 className="text-xl font-semibold">BS in Information Technology</h3>
-                <p className="text-gray-400">2021 – Present</p>
-                <p className="text-gray-300">[Your University Name]</p>
+                <p className="text-gray-400">2021 – 2025</p>
+                <p className="text-gray-300">[University of Makati]</p>
               </div>
               <div className="bg-gray-800/80 p-6 rounded-xl shadow-md hover:shadow-lg transition">
                 <h3 className="text-xl font-semibold">Senior High School</h3>
                 <p className="text-gray-400">2019 – 2021</p>
-                <p className="text-gray-300">[Your Senior High School Name]</p>
+                <p className="text-gray-300">[Higher School ng Umak]</p>
               </div>
               <div className="bg-gray-800/80 p-6 rounded-xl shadow-md hover:shadow-lg transition">
                 <h3 className="text-xl font-semibold">Junior High School</h3>
                 <p className="text-gray-400">2015 – 2019</p>
-                <p className="text-gray-300">[Your High School Name]</p>
+                <p className="text-gray-300">[Pitogo High School]</p>
               </div>
             </div>
           </div>
