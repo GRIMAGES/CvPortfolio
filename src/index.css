@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@tailwind utilities;
+
+@layer utilities {
+  .animate-fade-in {
+    @apply opacity-0 translate-y-6;
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    @apply opacity-0 translate-y-6;
+    animation: slideUp 1s ease-out forwards;
+  }
+
+  .animate-zoom-in {
+    @apply opacity-0 scale-95;
+    animation: zoomIn 1s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
