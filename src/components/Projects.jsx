@@ -8,7 +8,7 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="min-h-screen bg-gray-950 text-white py-20 px-6"
+      className="min-h-scree text-white py-20 px-6"
     >
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-12 border-b-4 border-gray-700 inline-block">

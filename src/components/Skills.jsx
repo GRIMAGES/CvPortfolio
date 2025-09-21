@@ -19,7 +19,7 @@ function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="min-h-screen bg-gray-950 text-white py-20 px-6"
+      className="min-h-screen text-white py-20 px-6"
     >
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-10 border-b-4 border-gray-700 inline-block">

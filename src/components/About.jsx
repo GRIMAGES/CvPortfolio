@@ -6,7 +6,7 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-screen bg-gray-950 text-white py-20 px-6"
+      className="min-h-screen text-white py-20 px-6"
     >
       <div
         ref={ref}
