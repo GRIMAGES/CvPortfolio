@@ -4,10 +4,10 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="h-screen flex items-center bg-gradient-to-b from-gray-900 via-black to-gray-800 text-white relative overflow-hidden"
+      className="h-screen flex items-center bg-gray-950 text-white relative overflow-hidden"
     >
-      {/* Background subtle glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]"></div>
+      {/* Background subtle effect */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04),transparent_70%)]"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         {/* Left Side (Text) */}
@@ -39,16 +39,16 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right Side (Image) */}
+        {/* Right Side (Image with floating glow) */}
         <div className="flex justify-center md:justify-end">
-          <div className="relative">
+          <div className="relative group">
             <img
               src={profileImg}
               alt="William"
-              className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-gray-700 shadow-2xl animate-fade-in"
+              className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-gray-800 shadow-2xl transition-transform duration-500 group-hover:scale-105"
             />
             {/* Subtle glow behind image */}
-            <div className="absolute inset-0 rounded-full bg-white opacity-5 blur-3xl -z-10"></div>
+            <div className="absolute inset-0 rounded-full bg-white opacity-10 blur-3xl -z-10"></div>
           </div>
         </div>
       </div>
