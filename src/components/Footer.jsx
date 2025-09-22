@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaGithub, FaLinkedin, FaEnvelope, FaFacebook } from "react-icons/fa";
 
 function Footer() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -22,7 +23,7 @@ function Footer() {
       setPopup("error");
     }
 
-    setTimeout(() => setPopup(""), 4000); // auto-hide
+    setTimeout(() => setPopup(""), 4000); // auto-hide after 4s
   };
 
   return (
@@ -32,23 +33,20 @@ function Footer() {
         {/* Left - Socials */}
         <div className="text-left">
           <h3 className="text-lg font-semibold text-white mb-6">Connect with me</h3>
-          <ul className="space-y-3 text-sm">
-            <li>
-              <a href="https://github.com" className="hover:text-white transition">
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://linkedin.com" className="hover:text-white transition">
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href="mailto:youremail@example.com" className="hover:text-white transition">
-                Email
-              </a>
-            </li>
-          </ul>
+          <div className="flex space-x-5 text-2xl">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              <FaGithub />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              <FaLinkedin />
+            </a>
+            <a href="mailto:youremail@example.com" className="hover:text-white transition">
+              <FaEnvelope />
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+              <FaFacebook />
+            </a>
+          </div>
         </div>
 
         {/* Right - Contact Form */}
@@ -88,21 +86,36 @@ function Footer() {
         </div>
       </div>
 
-      {/* Popup Notification */}
+      {/* Centered Popup Modal */}
       {popup && (
-        <div
-          className={`fixed bottom-6 right-6 px-6 py-4 rounded-xl shadow-2xl transition-all duration-500 ease-out transform
-            ${popup === "loading" ? "bg-gray-800 text-gray-300 animate-pulse translate-y-0 opacity-100" : ""}
-            ${popup === "success" ? "bg-green-600 text-white scale-105 translate-y-0 opacity-100" : ""}
-            ${popup === "error" ? "bg-red-600 text-white scale-105 translate-y-0 opacity-100" : ""}
-          `}
-        >
-          {popup === "loading" && "⏳ Sending..."}
-          {popup === "success" && "✅ Message Sent Successfully!"}
-          {popup === "error" && "❌ Failed to Send Message"}
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div
+            className={`px-8 py-6 rounded-2xl shadow-2xl text-center max-w-sm w-full transform transition-all duration-500
+              ${popup === "loading" ? "bg-gray-900 text-gray-300 animate-pulse scale-95" : ""}
+              ${popup === "success" ? "bg-green-600 text-white scale-105" : ""}
+              ${popup === "error" ? "bg-red-600 text-white scale-105" : ""}
+            `}
+          >
+            {popup === "loading" && (
+              <p className="text-lg">⏳ Sending your message...</p>
+            )}
+            {popup === "success" && (
+              <div>
+                <p className="text-2xl mb-2">✅ Thank you!</p>
+                <p className="text-sm">Your message has been sent successfully. I'll get back to you soon. 🙌</p>
+              </div>
+            )}
+            {popup === "error" && (
+              <div>
+                <p className="text-2xl mb-2">❌ Oops!</p>
+                <p className="text-sm">Something went wrong. Please try again later.</p>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
+      {/* Footer Bottom */}
       <div className="text-center text-gray-600 mt-12 text-sm">
         © {new Date().getFullYear()}{" "}
         <span className="text-white font-semibold">William</span> — All Rights Reserved.
