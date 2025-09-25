@@ -1,32 +1,54 @@
 function Projects() {
   const projects = [
-    { title: "Portfolio Website", desc: "My personal portfolio built with React + Tailwind" },
-    { title: "Smart Hub Platform", desc: "A unified platform for scholarships, volunteerism & alumni tracking" },
-    { title: "Smart Irrigation", desc: "IoT project with Arduino for efficient farming" },
+    { 
+      title: "Portfolio Website", 
+      desc: "My personal portfolio built with React + Tailwind", 
+      img: "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp",
+      link: "#" 
+    },
+    { 
+      title: "Smart Hub Platform", 
+      desc: "A unified platform for scholarships, volunteerism & alumni tracking", 
+      img: "https://img.daisyui.com/images/stock/photo-1519125323398-675f0ddb6308.webp",
+      link: "#" 
+    },
+    { 
+      title: "Smart Irrigation", 
+      desc: "IoT project with Arduino for efficient farming", 
+      img: "https://img.daisyui.com/images/stock/photo-1521747116042-5a810fda9664.webp",
+      link: "#" 
+    },
   ];
 
   return (
-    <section
-      id="projects"
-      className="min-h-scree text-white py-20 px-6"
-    >
+    <section id="projects" className="min-h-screen text-white py-20 px-6">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-12 border-b-4 border-gray-700 inline-block">
           Projects
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10 mt-10">
+        {/* Slider wrapper */}
+        <div className="carousel w-full rounded-box space-x-4 p-4">
           {projects.map((p, idx) => (
-            <div
-              key={idx}
-              className="p-8 rounded-2xl backdrop-blur-md bg-gray-900/70 shadow-2xl border border-gray-800 
-              hover:-translate-y-2 hover:shadow-cyan-500/30 transition-all duration-500"
-            >
-              <h3 className="text-2xl font-semibold mb-3">{p.title}</h3>
-              <p className="text-gray-400">{p.desc}</p>
+            <div key={idx} className="carousel-item w-full md:w-1/2 lg:w-1/3">
+              <div className="card lg:card-side bg-base-100 shadow-sm w-full">
+                <figure>
+                  <img src={p.img} alt={p.title} className="w-full object-cover" />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">{p.title}</h2>
+                  <p>{p.desc}</p>
+                  <div className="card-actions justify-end">
+                    <a href={p.link} className="btn btn-primary">
+                      View
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
