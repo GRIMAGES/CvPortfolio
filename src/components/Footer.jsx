@@ -10,7 +10,7 @@ function Footer() {
     setPopup("loading");
 
     try {
-      const res = await fetch("/.netlify/functions/sendMessage", {
+     const res = await fetch("/api/sendMessage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
