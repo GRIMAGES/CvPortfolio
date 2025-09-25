@@ -27,13 +27,13 @@ function Projects() {
           Projects
         </h2>
 
-        {/* Slider wrapper */}
-        <div className="carousel w-full rounded-box space-x-4 p-4">
+        {/* Scrollable carousel */}
+        <div className="carousel rounded-box space-x-4 p-4">
           {projects.map((p, idx) => (
-            <div key={idx} className="carousel-item w-full md:w-1/2 lg:w-1/3">
-              <div className="card lg:card-side bg-base-100 shadow-sm w-full">
+            <div key={idx} className="carousel-item w-80">
+              <div className="card bg-base-100 shadow-sm w-80">
                 <figure>
-                  <img src={p.img} alt={p.title} className="w-full object-cover" />
+                  <img src={p.img} alt={p.title} className="w-full h-48 object-cover" />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{p.title}</h2>
