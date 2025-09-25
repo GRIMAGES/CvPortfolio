@@ -4,10 +4,7 @@ function About() {
   const [ref, isVisible] = useInView();
 
   return (
-    <section
-      id="about"
-      className="min-h-screen text-white py-20 px-6"
-    >
+    <section id="about" className="min-h-screen text-white py-20 px-6">
       <div
         ref={ref}
         className={`max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start transition-all duration-1000 ease-out ${
@@ -28,30 +25,46 @@ function About() {
           </p>
         </div>
 
-        {/* Right side - School History */}
-        <div className="space-y-6">
-          <div className="p-6 rounded-2xl backdrop-blur-md bg-gray-900/70 shadow-2xl border border-gray-800 hover:-translate-y-2 hover:shadow-cyan-500/30 transition-all">
-            <h2 className="text-4xl font-bold mb-6 border-b-4 border-gray-700 inline-block">
-              Education
-            </h2>
-            <div className="space-y-6">
-              <div className="bg-gray-800/80 p-6 rounded-xl shadow-md hover:shadow-lg transition">
-                <h3 className="text-xl font-semibold">BS in Information Technology</h3>
-                <p className="text-gray-400">2021 – 2025</p>
-                <p className="text-gray-300">[University of Makati]</p>
+        {/* Right side - Education Timeline */}
+        <div className="p-6 rounded-2xl backdrop-blur-md bg-gray-900/70 shadow-2xl border border-gray-800 hover:-translate-y-2 hover:shadow-cyan-500/30 transition-all">
+          <h2 className="text-4xl font-bold mb-6 border-b-4 border-gray-700 inline-block">
+            Education
+          </h2>
+
+          <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+            <li>
+              <div className="timeline-middle">
+                ✅
               </div>
-              <div className="bg-gray-800/80 p-6 rounded-xl shadow-md hover:shadow-lg transition">
-                <h3 className="text-xl font-semibold">Senior High School</h3>
-                <p className="text-gray-400">2019 – 2021</p>
-                <p className="text-gray-300">[Higher School ng Umak]</p>
+              <div className="timeline-start mb-10 md:text-end">
+                <time className="font-mono italic">2021 – 2025</time>
+                <div className="text-lg font-black">BS in Information Technology</div>
+                <p className="text-gray-300">University of Makati</p>
               </div>
-              <div className="bg-gray-800/80 p-6 rounded-xl shadow-md hover:shadow-lg transition">
-                <h3 className="text-xl font-semibold">Junior High School</h3>
-                <p className="text-gray-400">2015 – 2019</p>
-                <p className="text-gray-300">[Pitogo High School]</p>
+              <hr />
+            </li>
+
+            <li>
+              <hr />
+              <div className="timeline-middle">🎓</div>
+              <div className="timeline-end md:mb-10">
+                <time className="font-mono italic">2019 – 2021</time>
+                <div className="text-lg font-black">Senior High School</div>
+                <p className="text-gray-300">Higher School ng Umak</p>
               </div>
-            </div>
-          </div>
+              <hr />
+            </li>
+
+            <li>
+              <hr />
+              <div className="timeline-middle">🏫</div>
+              <div className="timeline-start mb-10 md:text-end">
+                <time className="font-mono italic">2015 – 2019</time>
+                <div className="text-lg font-black">Junior High School</div>
+                <p className="text-gray-300">Pitogo High School</p>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
