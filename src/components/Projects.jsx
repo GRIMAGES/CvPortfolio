@@ -27,11 +27,11 @@ function Projects() {
           Projects
         </h2>
 
-        {/* Horizontal scrollable cards */}
-        <div className="flex space-x-6 overflow-x-auto pb-4">
+        {/* Horizontal snap-scroll cards */}
+        <div className="flex space-x-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
           {projects.map((p, idx) => (
-            <div key={idx} className="flex-shrink-0">
-              <div className="card bg-base-100 w-96 shadow-sm">
+            <div key={idx} className="flex-shrink-0 snap-center">
+              <div className="card bg-base-100 w-96 shadow-sm border border-gray-800">
                 <figure>
                   <img src={p.img} alt={p.title} className="w-full h-48 object-cover" />
                 </figure>
