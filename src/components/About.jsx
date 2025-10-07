@@ -1,12 +1,17 @@
 import useInView from "./hooks/useInView";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 
 export function About() {
   return (
     <section id="about">
-      <h2>About Me</h2>
-      <p>
+      <Typography variant="h5" component="h2" fontWeight={700} color="primary" gutterBottom>
+        About Me
+      </Typography>
+      <Divider sx={{ mb: 2 }} />
+      <Typography variant="body1">
         Hi, I’m <b>William</b>, a passionate Web Developer who enjoys building modern, sleek, and user-friendly websites. I specialize in front-end development but also explore back-end technologies. My goal is to create meaningful digital experiences that combine functionality with great design.
-      </p>
+      </Typography>
     </section>
   );
 }
@@ -14,7 +19,10 @@ export function About() {
 export function Education() {
   return (
     <section id="education">
-      <h2>Education</h2>
+      <Typography variant="h5" component="h2" fontWeight={700} color="primary" gutterBottom>
+        Education
+      </Typography>
+      <Divider sx={{ mb: 2 }} />
       <ul>
         <li>
           <div>✅</div>
