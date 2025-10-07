@@ -1,6 +1,7 @@
 import useInView from "./hooks/useInView";
 import { FaReact, FaNodeJs, FaGitAlt, FaPhp } from "react-icons/fa";
 import { SiJavascript, SiTailwindcss, SiMysql } from "react-icons/si";
+import TravelAdvisor from "./TravelAdvisor";
 
 function Skills() {
   const [ref, isVisible] = useInView();
@@ -62,19 +63,8 @@ function Skills() {
         </div>
 
         {/* ========================= RIGHT SIDE — TRAVEL ADVISOR PROJECT ========================= */}
-        <div className="flex flex-col justify-center items-center text-center bg-gray-900/70 rounded-2xl p-10 border border-gray-800 shadow-2xl hover:shadow-cyan-500/30 transition-all">
-          <h3 className="text-3xl font-semibold mb-4 text-cyan-400">Travel Advisor</h3>
-          <p className="text-gray-400 mb-6 leading-relaxed">
-            A rule-based expert system that provides personalized travel recommendations 
-            based on user preferences, destinations, and activities. Designed for intelligent 
-            travel planning and decision-making.
-          </p>
-          <a
-            href="#"
-            className="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 rounded-lg text-white font-medium transition"
-          >
-            View Project
-          </a>
+        <div className="w-full">
+          <TravelAdvisor />
         </div>
       </div>
     </section>
