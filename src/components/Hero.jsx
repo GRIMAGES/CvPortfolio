@@ -1,4 +1,11 @@
 import profileImg from "./image/profile1.jpg";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import Chip from "@mui/material/Chip";
+import EmailIcon from "@mui/icons-material/Email";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import DescriptionIcon from "@mui/icons-material/Description";
+import IconButton from "@mui/material/IconButton";
 
 function Hero() {
   return (
@@ -38,6 +45,36 @@ function Hero() {
         <p style={{ fontSize: 11, color: '#555', margin: 0, marginTop: 4, lineHeight: 1.4 }}>
           I create sleek, modern, and functional websites with clean designs and smooth user experiences.
         </p>
+        <Stack direction="row" spacing={1} justifyContent="center" sx={{ mt: 1 }}>
+          <Chip label="Open to Work" color="success" size="small" />
+          <IconButton aria-label="email" color="primary" href="mailto:youremail@example.com">
+            <EmailIcon fontSize="small" />
+          </IconButton>
+        </Stack>
+        <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 2 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            startIcon={<LinkedInIcon />}
+            href="https://www.linkedin.com/in/your-linkedin-profile"
+            target="_blank"
+            rel="noopener"
+          >
+            View LinkedIn
+          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="small"
+            startIcon={<DescriptionIcon />}
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            View CV
+          </Button>
+        </Stack>
       </div>
     </section>
   );

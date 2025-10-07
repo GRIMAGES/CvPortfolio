@@ -27,13 +27,24 @@ function App() {
       <Box
         sx={{
           minHeight: '100vh',
+          width: '100vw',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           bgcolor: 'background.default',
         }}
       >
-        <Hero />
+        <Box
+          sx={{
+            width: { xs: '90vw', md: '50vw' },
+            height: { xs: 'auto', md: '80vh' },
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Hero />
+        </Box>
       </Box>
       {/* Floating dark mode toggle button */}
       <Fab
