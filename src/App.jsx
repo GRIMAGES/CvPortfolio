@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ThemeProvider, createTheme, CssBaseline, Container, Grid, Card, CardContent, Fab } from "@mui/material";
+import { ThemeProvider, createTheme, CssBaseline, Container, Card, CardContent, Fab, Box } from "@mui/material";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -29,51 +29,19 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="xl" sx={{ mt: 6, mb: 4 }}>
-        <Grid container spacing={3} justifyContent="center" alignItems="stretch">
-          <Grid item xs={12} md={8} lg={7}>
-            <Card sx={{ height: "100%" }}>
-              <CardContent>
-                <Hero />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={4} lg={5}>
-            <Card sx={{ height: "100%" }}>
-              <CardContent>
-                <About />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6} lg={4}>
-            <Card sx={{ height: "100%" }}>
-              <CardContent>
-                <Skills />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6} lg={4}>
-            <Card sx={{ height: "100%" }}>
-              <CardContent>
-                <Projects />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={12} lg={4}>
-            <Card sx={{ height: "100%" }}>
-              <CardContent>
-                <TravelAdvisor />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12}>
-            <Card>
-              <CardContent>
-                <Footer />
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
+      <Container maxWidth="md" sx={{ mt: 6, mb: 4 }}>
+        <Card>
+          <CardContent>
+            <Box display="flex" flexDirection="column" gap={4}>
+              <Hero />
+              <About />
+              <Skills />
+              <Projects />
+              <TravelAdvisor />
+              <Footer />
+            </Box>
+          </CardContent>
+        </Card>
       </Container>
       {/* Floating dark mode toggle button */}
       <Fab
