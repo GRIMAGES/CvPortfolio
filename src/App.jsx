@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ThemeProvider, createTheme, CssBaseline, Box, Fab } from "@mui/material";
+import { ThemeProvider, createTheme, CssBaseline, Box, Fab, Paper } from "@mui/material";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import Hero from "./components/Hero";
 import { About } from "./components/About";
@@ -30,26 +30,64 @@ function App() {
         sx={{
           minHeight: '100vh',
           width: '100vw',
-          display: 'block',
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-start',
           bgcolor: 'background.default',
+          p: { xs: 1, md: 4 },
         }}
       >
         <Box
           sx={{
-            width: { xs: '95vw', md: 420 },
-            height: { xs: 'auto', md: 600 },
-            mt: { xs: 2, md: 6 },
-            ml: { xs: 2, md: 6 },
+            width: '100%',
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: 4,
             alignItems: 'flex-start',
             justifyContent: 'flex-start',
-            gap: 3,
+            maxWidth: 1300,
+            mx: 'auto',
           }}
         >
-          <Hero />
-          <About />
-          <Experience />
+          {/* Hero Card */}
+          <Paper elevation={6} sx={{
+            borderRadius: 4,
+            p: 3,
+            minWidth: { xs: '90vw', md: 340 },
+            maxWidth: 400,
+            minHeight: 420,
+            boxShadow: 6,
+            bgcolor: 'background.paper',
+            flex: '0 0 340px',
+          }}>
+            <Hero />
+          </Paper>
+          {/* About Card */}
+          <Paper elevation={4} sx={{
+            borderRadius: 4,
+            p: 3,
+            minWidth: { xs: '90vw', md: 320 },
+            maxWidth: 400,
+            minHeight: 200,
+            boxShadow: 4,
+            bgcolor: 'background.paper',
+            flex: '0 0 320px',
+          }}>
+            <About />
+          </Paper>
+          {/* Experience Card */}
+          <Paper elevation={4} sx={{
+            borderRadius: 4,
+            p: 3,
+            minWidth: { xs: '90vw', md: 320 },
+            maxWidth: 400,
+            minHeight: 200,
+            boxShadow: 4,
+            bgcolor: 'background.paper',
+            flex: '0 0 320px',
+          }}>
+            <Experience />
+          </Paper>
         </Box>
       </Box>
       {/* Floating dark mode toggle button */}
