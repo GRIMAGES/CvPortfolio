@@ -12,7 +12,7 @@ function Hero() {
     <section id="hero" style={{
       minHeight: 0,
       padding: 0,
-      background: 'linear-gradient(180deg, #e3f2fd 0%, #f5f5f5 100%)',
+      background: 'none', // No gradient
       borderRadius: 16,
       boxShadow: '0 2px 12px 0 rgba(33,150,243,0.08)',
       display: 'flex',

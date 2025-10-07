@@ -34,7 +34,7 @@ function App() {
           alignItems: 'flex-start',
           justifyContent: 'flex-start',
           bgcolor: 'background.default',
-          p: { xs: 1, md: 4 },
+          p: { xs: 1, md: 2 },
         }}
       >
         <Box
@@ -42,23 +42,23 @@ function App() {
             width: '100%',
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
-            gap: 4,
+            gap: 3,
             alignItems: 'flex-start',
             justifyContent: 'flex-start',
-            maxWidth: 1300,
-            mx: 'auto',
+            maxWidth: 1100,
+            ml: { xs: 0, md: 2 },
           }}
         >
           {/* Hero Card */}
           <Paper elevation={6} sx={{
             borderRadius: 4,
             p: 3,
-            minWidth: { xs: '90vw', md: 340 },
-            maxWidth: 400,
+            minWidth: { xs: '90vw', md: 320 },
+            maxWidth: 340,
             minHeight: 420,
             boxShadow: 6,
             bgcolor: 'background.paper',
-            flex: '0 0 340px',
+            flex: '0 0 320px',
           }}>
             <Hero />
           </Paper>
@@ -66,12 +66,12 @@ function App() {
           <Paper elevation={4} sx={{
             borderRadius: 4,
             p: 3,
-            minWidth: { xs: '90vw', md: 320 },
-            maxWidth: 400,
+            minWidth: { xs: '90vw', md: 300 },
+            maxWidth: 340,
             minHeight: 200,
             boxShadow: 4,
             bgcolor: 'background.paper',
-            flex: '0 0 320px',
+            flex: '0 0 300px',
           }}>
             <About />
           </Paper>
@@ -79,12 +79,12 @@ function App() {
           <Paper elevation={4} sx={{
             borderRadius: 4,
             p: 3,
-            minWidth: { xs: '90vw', md: 320 },
-            maxWidth: 400,
+            minWidth: { xs: '90vw', md: 340 },
+            maxWidth: 360,
             minHeight: 200,
             boxShadow: 4,
             bgcolor: 'background.paper',
-            flex: '0 0 320px',
+            flex: '0 0 340px',
           }}>
             <Experience />
           </Paper>
