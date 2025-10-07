@@ -12,8 +12,8 @@ function Hero() {
     <section id="hero" style={{
       minHeight: 0,
       padding: 0,
-      background: 'none', // No gradient
-      borderRadius: 16,
+      background: 'none',
+      borderRadius: 0,
       boxShadow: '0 2px 12px 0 rgba(33,150,243,0.08)',
       display: 'flex',
       flexDirection: 'column',

@@ -20,7 +20,7 @@ function App() {
             paper: darkMode ? "#1e1e1e" : "#fff",
           },
         },
-        shape: { borderRadius: 16 },
+        shape: { borderRadius: 0 },
       }),
     [darkMode]
   );
@@ -54,7 +54,7 @@ function App() {
         >
           {/* Hero Card */}
           <Paper elevation={6} sx={{
-            borderRadius: 4,
+            borderRadius: 0,
             p: 3,
             minWidth: { xs: '90vw', md: 320 },
             maxWidth: 340,
@@ -67,7 +67,7 @@ function App() {
           </Paper>
           {/* About Card */}
           <Paper elevation={4} sx={{
-            borderRadius: 4,
+            borderRadius: 0,
             p: 3,
             minWidth: { xs: '90vw', md: 300 },
             maxWidth: 340,
@@ -80,7 +80,7 @@ function App() {
           </Paper>
           {/* Experience Card */}
           <Paper elevation={4} sx={{
-            borderRadius: 4,
+            borderRadius: 0,
             p: 3,
             minWidth: { xs: '90vw', md: 340 },
             maxWidth: 360,
@@ -93,7 +93,7 @@ function App() {
           </Paper>
           {/* Skills Card */}
           <Paper elevation={4} sx={{
-            borderRadius: 4,
+            borderRadius: 0,
             p: 3,
             minWidth: { xs: '90vw', md: 340 },
             maxWidth: 360,
@@ -104,21 +104,23 @@ function App() {
           }}>
             <Skills />
           </Paper>
-          {/* Footer / Contact Card */}
-          <Paper elevation={4} sx={{
-            borderRadius: 4,
-            p: 3,
-            minWidth: { xs: '90vw', md: 600 },
-            maxWidth: 700,
-            minHeight: 120,
-            boxShadow: 4,
-            bgcolor: 'background.paper',
-            flex: '1 1 600px',
-          }}>
-            <Footer />
-          </Paper>
         </Box>
       </Box>
+      {/* Footer / Contact Card - fixed bottom-right */}
+      <Paper elevation={6} sx={{
+        position: 'fixed',
+        bottom: 24,
+        right: 24,
+        width: { xs: '92vw', md: 520 },
+        maxWidth: 560,
+        boxShadow: 8,
+        borderRadius: 0,
+        p: 2,
+        zIndex: 1500,
+        bgcolor: 'background.paper',
+      }}>
+        <Footer />
+      </Paper>
       {/* Floating dark mode toggle button */}
       <Fab
         color="primary"
@@ -126,7 +128,7 @@ function App() {
         sx={{
           position: "fixed",
           bottom: 32,
-          right: 32,
+          right: { xs: 32, md: 560 + 48 },
           zIndex: 2000,
         }}
         aria-label="toggle dark mode"

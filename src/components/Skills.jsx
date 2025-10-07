@@ -29,7 +29,7 @@ function Skills() {
         Skills
       </Typography>
       <Divider sx={{ mb: 2 }} />
-      <Stack direction="row" spacing={2.5} sx={{ overflowX: 'auto', pb: 1 }}>
+      <Stack direction="row" spacing={2.5} sx={{ flexWrap: 'wrap', rowGap: 2.5 }}>
         {skills.map((skill, idx) => (
           <Tooltip key={skill.name} title={skill.desc} arrow>
             <Paper
@@ -40,7 +40,7 @@ function Skills() {
                 gap: 1,
                 px: 3,
                 py: 1.5,
-                minWidth: 130,
+                minWidth: 150,
                 borderRadius: 9999,
                 boxShadow: 4,
                 bgcolor: 'grey.50',
@@ -56,13 +56,13 @@ function Skills() {
                 transition: 'box-shadow 0.25s, transform 0.25s, background 0.25s, border-color 0.25s',
                 '&:hover': {
                   boxShadow: 10,
-                  transform: 'scale(1.1)',
+                  transform: 'scale(1.08)',
                   bgcolor: 'primary.light',
                   color: 'primary.contrastText',
                   borderColor: 'primary.main',
                 },
                 '&:active': {
-                  transform: 'scale(1.06)',
+                  transform: 'scale(1.05)',
                 }
               }}
             >

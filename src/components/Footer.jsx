@@ -32,53 +32,27 @@ function Footer() {
 
   return (
     <section id="contact" style={{ width: "100%" }}>
-      <Typography variant="h6" component="h3" fontWeight={700} gutterBottom>
-        Contact Me
-      </Typography>
-      <Box component="form" onSubmit={handleSubmit} noValidate>
-        <Stack direction={{ xs: "column", md: "row" }} spacing={1.5} alignItems="stretch">
-          <TextField
-            size="small"
-            label="Name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            required
-            fullWidth
-          />
-          <TextField
-            size="small"
-            type="email"
-            label="Email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            required
-            fullWidth
-          />
-          <TextField
-            size="small"
-            label="Message"
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            required
-            fullWidth
-            multiline
-            minRows={1}
-          />
-          <Button type="submit" variant="contained" color="primary" disabled={status === "loading"}>
-            {status === "loading" ? "Sending..." : "Send"}
-          </Button>
-        </Stack>
+      <Box sx={{ borderRadius: 4, border: '1px solid', borderColor: 'divider', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', p: 2, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+        <Typography variant="h6" component="h3" fontWeight={700} color="primary">
+          Contact Me
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate>
+          <Stack direction={{ xs: "column", md: "row" }} spacing={1.5} alignItems="stretch">
+            <TextField size="small" label="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required fullWidth />
+            <TextField size="small" type="email" label="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required fullWidth />
+            <TextField size="small" label="Message" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required fullWidth multiline minRows={3} />
+            <Button type="submit" variant="contained" color="primary" disabled={status === "loading"}>
+              {status === "loading" ? "Sending..." : "Send"}
+            </Button>
+          </Stack>
+        </Box>
+        {status === "success" && (
+          <Typography variant="body2" color="success.main">Your message has been sent successfully.</Typography>
+        )}
+        {status === "error" && (
+          <Typography variant="body2" color="error.main">Something went wrong. Please try again later.</Typography>
+        )}
       </Box>
-      {status === "success" && (
-        <Typography variant="body2" color="success.main" sx={{ mt: 1 }}>
-          Your message has been sent successfully.
-        </Typography>
-      )}
-      {status === "error" && (
-        <Typography variant="body2" color="error.main" sx={{ mt: 1 }}>
-          Something went wrong. Please try again later.
-        </Typography>
-      )}
     </section>
   );
 }
