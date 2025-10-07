@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import { ThemeProvider, createTheme, CssBaseline, Box, Fab } from "@mui/material";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import Hero from "./components/Hero";
-import About from "./components/About";
+import { About, Education } from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import TravelAdvisor from "./components/TravelAdvisor";
 import Footer from "./components/Footer";
+import Hero from "./components/Hero";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false); // default to light mode
@@ -42,20 +42,22 @@ function App() {
           overflow: 'hidden',
           display: 'grid',
           gridTemplateColumns: { xs: '1fr', md: '0.7fr 1fr 1.3fr' },
-          gridTemplateRows: { xs: 'repeat(6, 1fr)', md: '0.6fr 1fr 0.7fr' },
+          gridTemplateRows: { xs: 'repeat(7, 1fr)', md: '1.2fr 0.7fr 1fr 0.5fr' },
           gap: 2,
           gridTemplateAreas: {
             xs: `
               "hero"
               "about"
+              "education"
               "skills"
               "projects"
               "travel"
               "footer"
             `,
             md: `
-              "hero skills travel"
-              "about projects travel"
+              "hero about travel"
+              "hero education travel"
+              "skills projects travel"
               "footer footer footer"
             `,
           },
@@ -63,39 +65,33 @@ function App() {
           p: 2,
         }}
       >
-        {/* Hero - Small */}
-        <Box sx={{ gridArea: 'hero', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', p: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', maxHeight: 140 }}>
+        {/* Hero - Vertical */}
+        <Box sx={{ gridArea: 'hero', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', maxWidth: 220, minHeight: 260, margin: '0 auto' }}>
           <Hero />
         </Box>
-        {/* About - Small */}
-        <Box sx={{ gridArea: 'about', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', p: 2, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', maxHeight: 180 }}>
-          <Box sx={{ width: '100%', height: '100%', maxHeight: 160, overflow: 'auto', transform: { md: 'scale(0.85)' }, transformOrigin: 'top left' }}>
-            <About />
-          </Box>
+        {/* About - Plain */}
+        <Box sx={{ gridArea: 'about', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', maxHeight: 180 }}>
+          <About />
+        </Box>
+        {/* Education - Plain */}
+        <Box sx={{ gridArea: 'education', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', maxHeight: 180 }}>
+          <Education />
         </Box>
         {/* Skills - Medium */}
-        <Box sx={{ gridArea: 'skills', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', maxHeight: 220 }}>
-          <Box sx={{ width: '100%', height: '100%', maxHeight: 200, overflow: 'auto', transform: { md: 'scale(0.9)' }, transformOrigin: 'top left' }}>
-            <Skills />
-          </Box>
+        <Box sx={{ gridArea: 'skills', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', display: 'flex', alignItems: 'center', justifyContent: 'center', maxHeight: 220 }}>
+          <Skills />
         </Box>
         {/* Projects - Medium */}
-        <Box sx={{ gridArea: 'projects', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', maxHeight: 220 }}>
-          <Box sx={{ width: '100%', height: '100%', maxHeight: 200, overflow: 'auto', transform: { md: 'scale(0.9)' }, transformOrigin: 'top left' }}>
-            <Projects />
-          </Box>
+        <Box sx={{ gridArea: 'projects', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', display: 'flex', alignItems: 'center', justifyContent: 'center', maxHeight: 220 }}>
+          <Projects />
         </Box>
         {/* TravelAdvisor - Large */}
-        <Box sx={{ gridArea: 'travel', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 320, minWidth: 320 }}>
-          <Box sx={{ width: '100%', height: '100%', minHeight: 280, minWidth: 280, overflow: 'auto', transform: { md: 'scale(1.05)' }, transformOrigin: 'top left' }}>
-            <TravelAdvisor />
-          </Box>
+        <Box sx={{ gridArea: 'travel', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 320, minWidth: 320 }}>
+          <TravelAdvisor />
         </Box>
-        {/* Footer - Full width */}
-        <Box sx={{ gridArea: 'footer', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Box sx={{ width: '100%', height: '100%', transform: { md: 'scale(0.95)' }, transformOrigin: 'top left' }}>
-            <Footer />
-          </Box>
+        {/* Footer - Compact and centered */}
+        <Box sx={{ gridArea: 'footer', minHeight: 0, overflow: 'hidden', borderRadius: 3, boxShadow: 2, bgcolor: 'background.paper', display: 'flex', alignItems: 'center', justifyContent: 'center', height: 60, p: 0 }}>
+          <Footer />
         </Box>
       </Box>
       {/* Floating dark mode toggle button */}
