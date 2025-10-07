@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import { ThemeProvider, createTheme, CssBaseline, Box, Fab } from "@mui/material";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import Hero from "./components/Hero";
+import { About } from "./components/About";
+import Experience from "./components/Experience";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false); // default to light mode
@@ -35,15 +37,19 @@ function App() {
         <Box
           sx={{
             width: { xs: '95vw', md: 420 },
-            height: { xs: 'auto', md: 420 },
+            height: { xs: 'auto', md: 600 },
             mt: { xs: 2, md: 6 },
             ml: { xs: 2, md: 6 },
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'flex-start',
             justifyContent: 'flex-start',
+            gap: 3,
           }}
         >
           <Hero />
+          <About />
+          <Experience />
         </Box>
       </Box>
       {/* Floating dark mode toggle button */}
