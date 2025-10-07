@@ -25,28 +25,51 @@ export default function TravelAdvisor() {
 
   // Fetch location, weather, and nearby places
   const fetchData = async (query) => {
+    const encoded = encodeURIComponent(query);
     try {
+      // Geocoding (Nominatim)
       const geoRes = await axios.get(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${query}`
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encoded}`,
+        { headers: { "Accept-Language": "en" } }
       );
-      if (geoRes.data.length === 0) return alert("Location not found!");
+      if (!Array.isArray(geoRes.data) || geoRes.data.length === 0) {
+        alert("Location not found. Try a different city.");
+        return;
+      }
       const { lat, lon } = geoRes.data[0];
       setCoords([parseFloat(lat), parseFloat(lon)]);
 
-      const weatherRes = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${
-          import.meta.env.VITE_OPENWEATHER_KEY
-        }&units=metric`
-      );
-      setWeather(weatherRes.data);
+      // Weather (OpenWeather) — optional if no key provided
+      const openWeatherKey = import.meta.env.VITE_OPENWEATHER_KEY;
+      if (openWeatherKey && openWeatherKey !== "") {
+        try {
+          const weatherRes = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?q=${encoded}&appid=${openWeatherKey}&units=metric`
+          );
+          setWeather(weatherRes.data);
+        } catch (weatherErr) {
+          console.warn("Weather fetch failed:", weatherErr);
+          alert("Unable to load weather. Check your OpenWeather API key.");
+        }
+      } else {
+        console.warn("VITE_OPENWEATHER_KEY is missing. Skipping weather fetch.");
+        setWeather(null);
+      }
 
-      const overpassRes = await axios.get(
-        `https://overpass-api.de/api/interpreter?data=[out:json];node(around:1500,${lat},${lon})["amenity"="restaurant"];out;`
-      );
-      setPlaces(overpassRes.data.elements);
+      // Nearby places (Overpass)
+      try {
+        const overpassRes = await axios.get(
+          `https://overpass-api.de/api/interpreter?data=[out:json];node(around:1500,${lat},${lon})["amenity"="restaurant"];out;`
+        );
+        setPlaces(Array.isArray(overpassRes.data.elements) ? overpassRes.data.elements : []);
+      } catch (overpassErr) {
+        console.warn("Overpass fetch failed:", overpassErr);
+        alert("Unable to load nearby places right now. Please try again later.");
+        setPlaces([]);
+      }
     } catch (error) {
       console.error(error);
-      alert("Error fetching data. Please try again.");
+      alert("Error fetching location data. Please try again.");
     }
   };
 

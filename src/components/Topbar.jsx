@@ -1,6 +1,6 @@
 function Topbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-black via-gray-800 to-gray-900 shadow-md">
+    <nav className="fixed top-0 left-0 w-full z-[1000] bg-gradient-to-r from-black via-gray-800 to-gray-900 shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         
         <a
