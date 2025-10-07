@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ThemeProvider, createTheme, CssBaseline, Container, Card, CardContent, Fab, Box } from "@mui/material";
+import { ThemeProvider, createTheme, CssBaseline, Box, Grid, Card, CardContent, Fab } from "@mui/material";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -26,23 +26,97 @@ function App() {
     [darkMode]
   );
 
+  // Dashboard fixed size (e.g., 100vh minus some margin)
+  const DASHBOARD_HEIGHT = '92vh';
+  const DASHBOARD_WIDTH = '98vw';
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="md" sx={{ mt: 6, mb: 4 }}>
-        <Card>
-          <CardContent>
-            <Box display="flex" flexDirection="column" gap={4}>
-              <Hero />
-              <About />
-              <Skills />
-              <Projects />
-              <TravelAdvisor />
-              <Footer />
-            </Box>
-          </CardContent>
-        </Card>
-      </Container>
+      <Box
+        sx={{
+          height: DASHBOARD_HEIGHT,
+          width: DASHBOARD_WIDTH,
+          mx: 'auto',
+          my: 2,
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          bgcolor: 'background.default',
+        }}
+      >
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            height: '100%',
+            width: '100%',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Profile/Hero - Large Card */}
+          <Grid item xs={12} md={6} lg={4} sx={{ height: { xs: '33%', md: '50%' } }}>
+            <Card sx={{ height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+              <CardContent sx={{ p: 1, width: '100%', height: '100%' }}>
+                <Box sx={{ transform: 'scale(0.7)', transformOrigin: 'top center', height: '100%', width: '100%' }}>
+                  <Hero />
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+          {/* About */}
+          <Grid item xs={12} md={6} lg={4} sx={{ height: { xs: '33%', md: '50%' } }}>
+            <Card sx={{ height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+              <CardContent sx={{ p: 1, width: '100%', height: '100%' }}>
+                <Box sx={{ transform: 'scale(0.85)', transformOrigin: 'top center', height: '100%', width: '100%' }}>
+                  <About />
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+          {/* Skills */}
+          <Grid item xs={12} md={6} lg={4} sx={{ height: { xs: '33%', md: '50%' } }}>
+            <Card sx={{ height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+              <CardContent sx={{ p: 1, width: '100%', height: '100%' }}>
+                <Box sx={{ transform: 'scale(0.85)', transformOrigin: 'top center', height: '100%', width: '100%' }}>
+                  <Skills />
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+          {/* Projects */}
+          <Grid item xs={12} md={6} lg={4} sx={{ height: { xs: '33%', md: '50%' } }}>
+            <Card sx={{ height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+              <CardContent sx={{ p: 1, width: '100%', height: '100%' }}>
+                <Box sx={{ transform: 'scale(0.85)', transformOrigin: 'top center', height: '100%', width: '100%' }}>
+                  <Projects />
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+          {/* TravelAdvisor */}
+          <Grid item xs={12} md={6} lg={4} sx={{ height: { xs: '33%', md: '50%' } }}>
+            <Card sx={{ height: '100%', minHeight: 200, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+              <CardContent sx={{ p: 1, width: '100%', height: '100%' }}>
+                <Box sx={{ transform: 'scale(0.85)', transformOrigin: 'top center', height: '100%', width: '100%' }}>
+                  <TravelAdvisor />
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+          {/* Footer */}
+          <Grid item xs={12} md={6} lg={4} sx={{ height: { xs: '33%', md: '50%' } }}>
+            <Card sx={{ height: '100%', minHeight: 120, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+              <CardContent sx={{ p: 1, width: '100%', height: '100%' }}>
+                <Box sx={{ transform: 'scale(0.85)', transformOrigin: 'top center', height: '100%', width: '100%' }}>
+                  <Footer />
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Box>
       {/* Floating dark mode toggle button */}
       <Fab
         color="primary"
