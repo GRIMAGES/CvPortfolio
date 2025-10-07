@@ -4,6 +4,7 @@ import { Brightness4, Brightness7 } from "@mui/icons-material";
 import Hero from "./components/Hero";
 import { About } from "./components/About";
 import Experience from "./components/Experience";
+import Skills from "./components/Skills";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false); // default to light mode
@@ -45,7 +46,7 @@ function App() {
             gap: 3,
             alignItems: 'flex-start',
             justifyContent: 'flex-start',
-            maxWidth: 1100,
+            maxWidth: 1500,
             ml: { xs: 0, md: 2 },
           }}
         >
@@ -87,6 +88,19 @@ function App() {
             flex: '0 0 340px',
           }}>
             <Experience />
+          </Paper>
+          {/* Skills Card */}
+          <Paper elevation={4} sx={{
+            borderRadius: 4,
+            p: 3,
+            minWidth: { xs: '90vw', md: 340 },
+            maxWidth: 360,
+            minHeight: 200,
+            boxShadow: 4,
+            bgcolor: 'background.paper',
+            flex: '0 0 340px',
+          }}>
+            <Skills />
           </Paper>
         </Box>
       </Box>
