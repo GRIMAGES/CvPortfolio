@@ -32,7 +32,7 @@ function Footer() {
 
   return (
     <section id="contact" style={{ width: "100%" }}>
-      <Box sx={{ borderRadius: 4, border: '1px solid', borderColor: 'divider', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', p: 2, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+      <Box sx={{ borderRadius: 0, border: '1px solid', borderColor: 'divider', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', p: 2, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
         <Typography variant="h6" component="h3" fontWeight={700} color="primary">
           Contact Me
         </Typography>

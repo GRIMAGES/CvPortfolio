@@ -64,6 +64,7 @@ function Experience() {
                 gap: 2,
                 bgcolor: 'grey.50',
                 boxShadow: 3,
+                borderRadius: 0,
                 transition: 'box-shadow 0.3s, transform 0.3s, background 0.3s, opacity 0.5s, translate 0.5s',
                 cursor: 'pointer',
                 opacity: mounted ? 1 : 0,
