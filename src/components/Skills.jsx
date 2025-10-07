@@ -8,13 +8,13 @@ import Tooltip from "@mui/material/Tooltip";
 import { useEffect, useState } from "react";
 
 const skills = [
-  { name: "React", icon: <FaReact size={22} style={{ color: '#06b6d4' }} />, desc: "React.js UI library" },
-  { name: "JavaScript", icon: <SiJavascript size={22} style={{ color: '#facc15' }} />, desc: "JavaScript language" },
-  { name: "Tailwind CSS", icon: <SiTailwindcss size={22} style={{ color: '#38bdf8' }} />, desc: "Utility-first CSS" },
-  { name: "Node.js", icon: <FaNodeJs size={22} style={{ color: '#22c55e' }} />, desc: "Backend JS runtime" },
-  { name: "Git", icon: <FaGitAlt size={22} style={{ color: '#f97316' }} />, desc: "Version control" },
-  { name: "PHP", icon: <FaPhp size={22} style={{ color: '#6366f1' }} />, desc: "Server-side scripting" },
-  { name: "SQL", icon: <SiMysql size={22} style={{ color: '#3b82f6' }} />, desc: "Database language" },
+  { name: "React", icon: <FaReact size={26} style={{ color: '#06b6d4' }} />, desc: "React.js UI library" },
+  { name: "JavaScript", icon: <SiJavascript size={26} style={{ color: '#facc15' }} />, desc: "JavaScript language" },
+  { name: "Tailwind CSS", icon: <SiTailwindcss size={26} style={{ color: '#38bdf8' }} />, desc: "Utility-first CSS" },
+  { name: "Node.js", icon: <FaNodeJs size={26} style={{ color: '#22c55e' }} />, desc: "Backend JS runtime" },
+  { name: "Git", icon: <FaGitAlt size={26} style={{ color: '#f97316' }} />, desc: "Version control" },
+  { name: "PHP", icon: <FaPhp size={26} style={{ color: '#6366f1' }} />, desc: "Server-side scripting" },
+  { name: "SQL", icon: <SiMysql size={26} style={{ color: '#3b82f6' }} />, desc: "Database language" },
 ];
 
 function Skills() {
@@ -29,39 +29,45 @@ function Skills() {
         Skills
       </Typography>
       <Divider sx={{ mb: 2 }} />
-      <Stack direction="row" spacing={2} sx={{ overflowX: 'auto', pb: 1 }}>
+      <Stack direction="row" spacing={2.5} sx={{ overflowX: 'auto', pb: 1 }}>
         {skills.map((skill, idx) => (
           <Tooltip key={skill.name} title={skill.desc} arrow>
             <Paper
-              elevation={3}
+              elevation={4}
               sx={{
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
-                gap: 0.5,
-                px: 2,
+                gap: 1,
+                px: 3,
                 py: 1.5,
-                minWidth: 70,
-                borderRadius: 3,
-                boxShadow: 3,
+                minWidth: 130,
+                borderRadius: 9999,
+                boxShadow: 4,
                 bgcolor: 'grey.50',
-                fontWeight: 600,
-                fontSize: 14,
+                border: '2px solid',
+                borderColor: 'primary.light',
+                fontWeight: 700,
+                fontSize: 15,
+                letterSpacing: 0.2,
                 cursor: 'pointer',
                 opacity: mounted ? 1 : 0,
                 transform: mounted ? 'translateY(0)' : 'translateY(30px)',
                 animation: mounted ? `fadeInSkill 0.5s ${0.1 + idx * 0.08}s both` : 'none',
-                transition: 'box-shadow 0.3s, transform 0.3s, background 0.3s',
+                transition: 'box-shadow 0.25s, transform 0.25s, background 0.25s, border-color 0.25s',
                 '&:hover': {
-                  boxShadow: 8,
-                  transform: 'scale(1.08)',
+                  boxShadow: 10,
+                  transform: 'scale(1.1)',
                   bgcolor: 'primary.light',
                   color: 'primary.contrastText',
+                  borderColor: 'primary.main',
                 },
+                '&:active': {
+                  transform: 'scale(1.06)',
+                }
               }}
             >
               {skill.icon}
-              <span style={{ fontWeight: 600, fontSize: 13 }}>{skill.name}</span>
+              <span style={{ fontWeight: 700 }}>{skill.name}</span>
             </Paper>
           </Tooltip>
         ))}
