@@ -5,13 +5,13 @@ function Hero() {
     <section id="hero" style={{
       minHeight: 0,
       padding: 0,
-      background: 'linear-gradient(90deg, #e3f2fd 0%, #f5f5f5 100%)',
+      background: 'linear-gradient(180deg, #e3f2fd 0%, #f5f5f5 100%)',
       borderRadius: 16,
       boxShadow: '0 2px 12px 0 rgba(33,150,243,0.08)',
       display: 'flex',
+      flexDirection: 'column',
       alignItems: 'center',
-      gap: 18,
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
       maxWidth: 340,
       margin: '0 auto',
       marginTop: 8,
@@ -28,10 +28,11 @@ function Hero() {
           objectFit: 'cover',
           border: '2px solid #1976d2',
           boxShadow: '0 2px 8px 0 rgba(33,150,243,0.10)',
-          marginLeft: 16,
+          marginTop: 16,
+          marginBottom: 10,
         }}
       />
-      <div style={{ padding: '8px 0', flex: 1 }}>
+      <div style={{ padding: '8px 0', flex: 1, textAlign: 'center' }}>
         <h1 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: '#1976d2', letterSpacing: 0.5 }}>William Duncan Gonzales</h1>
         <h2 style={{ fontSize: 13, fontWeight: 500, color: '#333', margin: 0, marginTop: 2 }}>Web Developer & Designer</h2>
         <p style={{ fontSize: 11, color: '#555', margin: 0, marginTop: 4, lineHeight: 1.4 }}>
