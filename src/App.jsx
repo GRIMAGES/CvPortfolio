@@ -91,22 +91,22 @@ function App() {
           }}>
             <Experience />
           </Paper>
-          {/* Skills Card */}
+          {/* Skills Card - horizontal wide */}
           <Paper elevation={4} sx={{
             borderRadius: 0,
             p: 3,
-            minWidth: { xs: '90vw', md: 340 },
-            maxWidth: 360,
-            minHeight: 220,
+            minWidth: { xs: '90vw', md: 720 },
+            maxWidth: 900,
+            minHeight: 180,
             boxShadow: 4,
             bgcolor: 'background.paper',
-            flex: '0 0 340px',
+            flex: { xs: '1 1 90vw', md: '1 1 720px' },
           }}>
             <Skills />
           </Paper>
         </Box>
       </Box>
-      {/* Footer / Contact Card - fixed bottom-right */}
+      {/* Footer / Contact Card - fixed bottom-right (vertical) */}
       <Paper elevation={6} sx={{
         position: 'fixed',
         bottom: 24,
