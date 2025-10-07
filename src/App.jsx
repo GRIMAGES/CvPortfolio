@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import { About } from "./components/About";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
+import Footer from "./components/Footer";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false); // default to light mode
@@ -42,11 +43,12 @@ function App() {
           sx={{
             width: '100%',
             display: 'flex',
+            flexWrap: 'wrap',
             flexDirection: { xs: 'column', md: 'row' },
             gap: 3,
             alignItems: 'flex-start',
             justifyContent: 'flex-start',
-            maxWidth: 1500,
+            maxWidth: 1600,
             ml: { xs: 0, md: 2 },
           }}
         >
@@ -95,12 +97,25 @@ function App() {
             p: 3,
             minWidth: { xs: '90vw', md: 340 },
             maxWidth: 360,
-            minHeight: 200,
+            minHeight: 220,
             boxShadow: 4,
             bgcolor: 'background.paper',
             flex: '0 0 340px',
           }}>
             <Skills />
+          </Paper>
+          {/* Footer / Contact Card */}
+          <Paper elevation={4} sx={{
+            borderRadius: 4,
+            p: 3,
+            minWidth: { xs: '90vw', md: 600 },
+            maxWidth: 700,
+            minHeight: 120,
+            boxShadow: 4,
+            bgcolor: 'background.paper',
+            flex: '1 1 600px',
+          }}>
+            <Footer />
           </Paper>
         </Box>
       </Box>
