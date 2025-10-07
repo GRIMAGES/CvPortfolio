@@ -91,16 +91,16 @@ function App() {
           }}>
             <Experience />
           </Paper>
-          {/* Skills Card - horizontal wide */}
+          {/* Skills Card - same width as Experience to sit beside it */}
           <Paper elevation={4} sx={{
             borderRadius: 0,
             p: 3,
-            minWidth: { xs: '90vw', md: 720 },
-            maxWidth: 900,
-            minHeight: 180,
+            minWidth: { xs: '90vw', md: 340 },
+            maxWidth: 360,
+            minHeight: 220,
             boxShadow: 4,
             bgcolor: 'background.paper',
-            flex: { xs: '1 1 90vw', md: '1 1 720px' },
+            flex: '0 0 340px',
           }}>
             <Skills />
           </Paper>
@@ -111,11 +111,11 @@ function App() {
         position: 'fixed',
         bottom: 24,
         right: 24,
-        width: { xs: '92vw', md: 520 },
-        maxWidth: 560,
+        width: { xs: '92vw', md: 360 },
+        maxWidth: 380,
         boxShadow: 8,
         borderRadius: 0,
-        p: 2,
+        p: 0,
         zIndex: 1500,
         bgcolor: 'background.paper',
       }}>
@@ -128,7 +128,7 @@ function App() {
         sx={{
           position: "fixed",
           bottom: 32,
-          right: { xs: 32, md: 560 + 48 },
+          right: { xs: 32, md: 380 + 48 },
           zIndex: 2000,
         }}
         aria-label="toggle dark mode"

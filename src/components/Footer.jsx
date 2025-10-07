@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -9,8 +9,22 @@ function Footer() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(""); // '', 'loading', 'success', 'error'
 
+  const emailRegex = useMemo(() => /^[^\s@]+@[^\s@]+\.[^\s@]+$/, []);
+  const nameError = form.name.trim().length > 0 && form.name.trim().length < 2;
+  const emailError = form.email.trim().length > 0 && !emailRegex.test(form.email.trim());
+  const messageError = form.message.trim().length > 0 && form.message.trim().length < 10;
+  const messageMax = 500;
+  const messageLength = form.message.length;
+
+  const isValid =
+    form.name.trim().length >= 2 &&
+    emailRegex.test(form.email.trim()) &&
+    form.message.trim().length >= 10 &&
+    form.message.length <= messageMax;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isValid) return;
     setStatus("loading");
     try {
       const res = await fetch("/api/sendMessage", {
@@ -38,10 +52,47 @@ function Footer() {
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>
           <Stack direction={{ xs: "column", md: "row" }} spacing={1.5} alignItems="stretch">
-            <TextField size="small" label="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required fullWidth />
-            <TextField size="small" type="email" label="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required fullWidth />
-            <TextField size="small" label="Message" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required fullWidth multiline minRows={3} />
-            <Button type="submit" variant="contained" color="primary" disabled={status === "loading"}>
+            <TextField
+              size="small"
+              label="Name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              required
+              fullWidth
+              error={nameError}
+              helperText={nameError ? "Name must be at least 2 characters" : " "}
+              sx={{ flex: { md: 1 } }}
+            />
+            <TextField
+              size="small"
+              type="email"
+              label="Email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              required
+              fullWidth
+              error={emailError}
+              helperText={emailError ? "Enter a valid email address" : " "}
+              sx={{ flex: { md: 1 } }}
+            />
+            <TextField
+              size="small"
+              label={`Message (${messageLength}/${messageMax})`}
+              value={form.message}
+              onChange={(e) => {
+                const v = e.target.value;
+                if (v.length <= messageMax) setForm({ ...form, message: v });
+              }}
+              required
+              fullWidth
+              multiline
+              minRows={6}
+              maxRows={12}
+              error={messageError}
+              helperText={messageError ? "Message must be at least 10 characters" : " "}
+              sx={{ flex: { md: 2 }, textarea: { resize: 'vertical' } }}
+            />
+            <Button type="submit" variant="contained" color="primary" disabled={status === "loading" || !isValid}>
               {status === "loading" ? "Sending..." : "Send"}
             </Button>
           </Stack>
