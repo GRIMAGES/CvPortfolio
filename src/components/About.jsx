@@ -11,7 +11,7 @@ function About() {
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        {/* Left side - About Me */}
+        
         <div className="p-8 rounded-2xl backdrop-blur-md bg-gray-900/70 shadow-2xl border border-gray-800 hover:-translate-y-2 hover:shadow-cyan-500/30 transition-all">
           <h2 className="text-4xl font-bold mb-6 border-b-4 border-gray-700 inline-block">
             About Me
@@ -25,7 +25,7 @@ function About() {
           </p>
         </div>
 
-        {/* Right side - Education Timeline */}
+        
         <div className="p-6 rounded-2xl backdrop-blur-md bg-gray-900/70 shadow-2xl border border-gray-800 hover:-translate-y-2 hover:shadow-cyan-500/30 transition-all">
           <h2 className="text-4xl font-bold mb-6 border-b-4 border-gray-700 inline-block">
             Education

@@ -2,7 +2,7 @@ function Topbar() {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-black via-gray-800 to-gray-900 shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        {/* Logo */}
+        
         <a
           href="#hero"
           className="text-2xl font-bold tracking-tight text-white"
@@ -10,7 +10,7 @@ function Topbar() {
           MyPortfolio
         </a>
 
-        {/* Desktop Links */}
+       
         <ul className="hidden md:flex space-x-8 font-medium">
           {["Home", "About", "Projects", "Contact"].map((item) => (
             <li key={item}>
@@ -25,7 +25,7 @@ function Topbar() {
           ))}
         </ul>
 
-        {/* Mobile Menu */}
+        
         <div className="md:hidden">
           <button className="text-white text-2xl">☰</button>
         </div>

@@ -16,51 +16,65 @@ function Skills() {
   ];
 
   return (
-    <section
-      id="skills"
-      ref={ref}
-      className="min-h-screen text-white py-20 px-6"
-    >
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-10 border-b-4 border-gray-700 inline-block">
-          Skills
-        </h2>
+    <section id="skills" className="min-h-screen text-white py-20 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {skills.map((skill, idx) => (
-            <div
-              key={idx}
-              className={`
-                p-6 rounded-2xl backdrop-blur-md bg-gray-900/70 shadow-2xl border border-gray-800
-                hover:shadow-cyan-500/30 hover:-translate-y-2 transition-all
-                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
-              `}
-              style={{
-                transition: "all 0.8s ease-out",
-                transitionDelay: `${idx * 0.15}s`,
-              }}
-            >
-              {/* Icon and Name */}
-              <div className="flex items-center gap-3 mb-4">
-                {skill.icon}
-                <h3 className="text-xl font-semibold">{skill.name}</h3>
+        {/* ========================= LEFT SIDE — SKILLS ========================= */}
+        <div ref={ref}>
+          <h2 className="text-4xl font-bold mb-10 border-b-4 border-gray-700 inline-block">
+            Skills
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {skills.map((skill, idx) => (
+              <div
+                key={idx}
+                className={`p-6 rounded-2xl backdrop-blur-md bg-gray-900/70 shadow-2xl border border-gray-800
+                  hover:shadow-cyan-500/30 hover:-translate-y-2 transition-all
+                  ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                style={{
+                  transition: "all 0.8s ease-out",
+                  transitionDelay: `${idx * 0.15}s`,
+                }}
+              >
+                {/* Icon + Name */}
+                <div className="flex items-center gap-3 mb-4">
+                  {skill.icon}
+                  <h3 className="text-xl font-semibold">{skill.name}</h3>
+                </div>
+
+                {/* Progress Bar */}
+                <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+                  <div
+                    className="h-3 rounded-full bg-gradient-to-r from-gray-400 to-white"
+                    style={{
+                      width: isVisible ? `${skill.level}%` : "0%",
+                      transition: "width 1.2s ease-in-out",
+                    }}
+                  ></div>
+                </div>
+
+                {/* Percentage */}
+                <p className="mt-2 text-sm text-gray-400">{skill.level}%</p>
               </div>
+            ))}
+          </div>
+        </div>
 
-              {/* Progress Bar */}
-              <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
-                <div
-                  className="h-3 rounded-full bg-gradient-to-r from-gray-400 to-white"
-                  style={{
-                    width: isVisible ? `${skill.level}%` : "0%",
-                    transition: "width 1.2s ease-in-out",
-                  }}
-                ></div>
-              </div>
-
-              {/* Percentage */}
-              <p className="mt-2 text-sm text-gray-400">{skill.level}%</p>
-            </div>
-          ))}
+        {/* ========================= RIGHT SIDE — TRAVEL ADVISOR PROJECT ========================= */}
+        <div className="flex flex-col justify-center items-center text-center bg-gray-900/70 rounded-2xl p-10 border border-gray-800 shadow-2xl hover:shadow-cyan-500/30 transition-all">
+          <h3 className="text-3xl font-semibold mb-4 text-cyan-400">Travel Advisor</h3>
+          <p className="text-gray-400 mb-6 leading-relaxed">
+            A rule-based expert system that provides personalized travel recommendations 
+            based on user preferences, destinations, and activities. Designed for intelligent 
+            travel planning and decision-making.
+          </p>
+          <a
+            href="#"
+            className="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 rounded-lg text-white font-medium transition"
+          >
+            View Project
+          </a>
         </div>
       </div>
     </section>
