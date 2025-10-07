@@ -28,19 +28,19 @@ function App() {
         sx={{
           minHeight: '100vh',
           width: '100vw',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'flex-start',
+          display: 'block',
           bgcolor: 'background.default',
         }}
       >
         <Box
           sx={{
-            width: { xs: '90vw', md: '50vw' },
-            height: { xs: 'auto', md: '80vh' },
+            width: { xs: '95vw', md: 420 },
+            height: { xs: 'auto', md: 420 },
+            mt: { xs: 2, md: 6 },
+            ml: { xs: 2, md: 6 },
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
           }}
         >
           <Hero />
